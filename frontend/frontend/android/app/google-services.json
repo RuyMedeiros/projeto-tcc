@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "996404936216",
+    "project_id": "calendario-feminino-b2971",
+    "storage_bucket": "calendario-feminino-b2971.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:996404936216:android:9c00149ee42ec0fd0d0d6d",
+        "android_client_info": {
+          "package_name": "com.seuprojeto.calendario_feminino"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCt3bh8TnEgaHD6TxN7kojZzRSWYCzMS00"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
