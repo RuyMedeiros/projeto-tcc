@@ -1,12 +1,15 @@
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
-from sqlalchemy.orm import Session
 from app.db.session import SessionLocal
 from app.models.user import User
-from app.core.security import SECRET_KEY, ALGORITHM
+from app.core.encryption import get_secret_key
+from app.models.user import User
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
+
+SECRET_KEY = get_secret_key()  # Pega a chave secreta das variáveis de ambiente
+ALGORITHM = "HS256"  # Algoritmo utilizado para assinar o JWT
 
 def get_db():
     db = SessionLocal()
@@ -17,7 +20,6 @@ def get_db():
 
 def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)) -> User:
     try:
-        # Verificar o token
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         user_id: str = payload.get("sub")
         if user_id is None:

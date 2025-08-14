@@ -1,8 +1,10 @@
 from fastapi import FastAPI
-from app.api.v1.endpoints import auth, user, cycle
+from app.routers import auth, user, cycle  # Importando os roteadores de autenticação, usuário e ciclo
 
 app = FastAPI(title="Calendário Feminino API")
 
-app.include_router(auth.router)
-app.include_router(user.router)
-app.include_router(cycle.router)
+# Registrando as rotas
+app.include_router(auth.router, prefix="/auth", tags=["auth"])  # Roteiro de autenticação
+app.include_router(user.router, prefix="/users", tags=["users"])  # Roteiro de usuários
+app.include_router(cycle.router, prefix="/cycles", tags=["cycles"])  # Roteiro de ciclos menstruais
+

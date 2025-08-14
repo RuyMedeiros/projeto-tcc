@@ -6,6 +6,7 @@ class UserBase(BaseModel):
 
 class UserCreate(UserBase):
     password: str
+    cycle_data: str  # Adicionando o campo para os dados sensíveis do ciclo menstrual
 
 class UserLogin(BaseModel):
     email: EmailStr
